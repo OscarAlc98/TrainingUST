@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "title": "Book 1",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "title": "Second book"
+    },
+    {
+      "id": "7b59",
+      "title": "Hunger Games"
+    }
+  ]
+}
