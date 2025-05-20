@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+input, button {
+  margin: 5px;
+  padding: 8px;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+button.edit i {
+  color: #3498db; /* Azul */
+  font-size: 18px;
+}
+
+button.delete i {
+  color: #e74c3c; /* Rojo */
+  font-size: 18px;
+}
+
+button.edit:hover i,
+button.delete:hover i {
+  opacity: 0.7;
+}
+
+h2 {
+  color: #333;
+}
+
+#titleInput {
+  width: 300px;
+}
+
+button.add {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.add:hover {
+  background-color: #218838;
+}
+
+button.search {
+  background-color: #0593a8;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.search:hover {
+  background-color: #046272;
+}

@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <input type = "text">
+        <input type = "text">
+        <input type = "radio" name="gender">Male
+        <input type = "radio" name="gender">Female
+        <select name="cars" id="cars">
+            <option value="Volvo">Volvo</option>
+            <option value="Saab">Saab</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Audi">Audi</option>
+        </select>
+          <span id="selectedCar"></span>
+
+        <script>
+        const dropdown = document.getElementById("cars");
+        const selectedCarLabel = document.getElementById("selectedCar");
+
+        dropdown.addEventListener("change", function () {
+            selectedCarLabel.textContent = dropdown.value;
+        });
+        selectedCarLabel.textContent = dropdown.value;
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,12 @@
+<html>
+    <script>
+        function foo() {
+            this. a=1;
+            const bar = function() {
+                console.log(a);
+            }
+            bar();
+        }
+        foo();
+    </script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CRUD</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<h2>Books</h2>
+
+<input type="text" id="titleInput" placeholder="Enter title" />
+<button class="add" onclick="createPost()">Add Book</button>
+
+<br><br>
+
+  <input type="text" id="searchInput" placeholder="Search book" />
+  <button onclick="searchBooks()" class="search">Search</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="postList"></tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>

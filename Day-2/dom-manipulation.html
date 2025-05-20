@@ -1,0 +1,35 @@
+<html>
+    <body>
+    <input type="radio" id="num1" name="gender" value="male">
+    <input type="radio" id="num2" name="gender" value="female">
+    <input type="radio" id="num3" name="xValue" value="xValue">
+    <button onclick="sum()">Sum</button>
+    <button onclick="addNewField()">Add New Field</button>
+    <div id="result">Result:</div>
+
+    <script>
+        function sum(event) {
+            // input[name="${radioGroupName}"]:checked
+            const radioElementSelected = document.querySelector('input[name="gender"]:checked');
+            // const element1 = document.getElementById("num1");
+            // const element2 = document.getElementById("num2");
+            const element3 = document.getElementById("result");
+
+            if (radioElementSelected) {
+                console.log(radioElementSelected);
+                element3.textContent = radioElementSelected.value;
+            } else {
+                console.log("No selected gender value");
+            }
+
+            // element3.textContent += parseInt(element1.value) + parseInt(element2.value);
+        }
+
+        function addNewField() {
+            const htmlElement = '<input type="radio" name="gender" value="male">';
+            const element3 = document.getElementById("result");
+            element3.innerHTML += htmlElement;
+        }
+    </script>
+</body>
+</html>

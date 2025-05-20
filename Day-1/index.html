@@ -1,0 +1,42 @@
+<html>
+    <script>
+        const a = 1; //reference -> constant or variable
+        // a = 2; //re-assignment
+        var b = 5;
+        const numbers = [1, 2, 3, 11, 5, -1];
+        // numbers.sort(function(a,b){
+        //      return b - a;
+        //});
+        const newArray = numbers.map(function(a) {//callback function
+            // if (a%2 == 0) {
+            //     return a+10;
+            // }else{
+            //     return a;
+            // }
+            return a%2 == 0 ? a+10: a; //Ternary operator
+        })
+        console.log(numbers);
+        console.log(newArray);
+ 
+        function processClick(event) { //event handler
+            console.log(event.target.name);
+            return 120; //any returned value is lost
+        }
+ 
+        // numbers.push(4); //modification
+        // increment element by 10 only if its an even number?? output: 1,12,3,11,5,-1
+       
+        const result = numbers.find(params => params ==1);
+        //     console.log(params);
+        //     return params == 1; //return boolean
+        // });
+        // console.log(result);
+        // console.log(numbers);
+   
+    </script>
+    <body>
+        <input type="text" onclick="processClick(event)" name="Text 1">
+        <button onclick="processClick(event)" name="button1">Button 1</button>
+        <button onclick="processClick(event)" name="button2">Button 2</button>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script>
+            //scope
+            var global = 1;
+            function foo(){
+                var local = 2;
+                console.log(global);
+                //block scope
+                for(var i=0; i<3; i++){
+                    console.log(i);
+                }              
+            }
+            foo();
+            //console.log(local);
+        </script>
+    </head>
+</html>
