@@ -1,85 +1,73 @@
+import React, { useEffect, useState } from 'react';
+import { useProjects } from './projectHooks';
 import ProjectList from './ProjectList';
-import { useState, useEffect } from 'react';
-import { projectAPI } from './projectAPI';
-import { Project } from './Project';
 
 function ProjectsPage() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(undefined);
-  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    data,
+    isPending,
+    error,
+    isError,
+    isFetching,
+    page,
+    setPage,
+    isPreviousData,
+  } = useProjects();
 
-  const handleMoreClick = () => {
-    setCurrentPage((currentPage) => currentPage + 1);
-  };
-
-  useEffect(() => {
-    async function loadProjects() {
-      setLoading(true);
-      try {
-        const data = await projectAPI.get(currentPage);
-        setError(null);
-        if (currentPage === 1) {
-          setProjects(data);
-        } else {
-          setProjects((projects) => [...projects, ...data]);
-        }
-      } catch (e) {
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadProjects();
-  }, [currentPage]);
-
-  const saveProject = (project) => {
-    projectAPI
-     .put(project)
-     .then((updatedProject) => {
-       let updatedProjects = projects.map((p) => {
-         return p.id === project.id ? new Project(updatedProject) : p;
-       });
-       setProjects(updatedProjects);
-     })
-     .catch((e) => {
-       setError(e.message);
-     });
-  };
-    return (
+  return (
     <>
-        <h1>Projects</h1>
-        {error && (
+      <h1>Projects</h1>
+
+      {data ? (
+        <>
+          {isFetching && !isPending && (
+            <span className="toast">Refreshing...</span>
+          )}
+          <ProjectList projects={data} />
+          <div className="row">
+            <div className="col-sm-4">Current page: {page + 1}</div>
+            <div className="col-sm-4">
+              <div className="button-group right">
+                <button
+                  className="button "
+                  onClick={() => setPage((oldPage) => oldPage - 1)}
+                  disabled={page === 0}
+                >
+                  Previous
+                </button>
+                <button
+                  className="button"
+                  onClick={() => {
+                    if (!isPreviousData) {
+                      setPage((oldPage) => oldPage + 1);
+                    }
+                  }}
+                  disabled={data.length != 10}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : isPending ? (
+        <div className="center-page">
+          <span className="spinner primary"></span>
+          <p>Loading...</p>
+        </div>
+      ) : isError && error instanceof Error ? (
         <div className="row">
           <div className="card large error">
             <section>
               <p>
                 <span className="icon-alert inverse "></span>
-                {error}
+                {error.message}
               </p>
             </section>
           </div>
         </div>
-      )}
-        <ProjectList onSave={saveProject} projects={projects} />
-        {!loading && !error && (
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="button-group fluid">
-              <button className="button default" onClick={handleMoreClick}>
-                More...
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-        {loading && (
-        <div className="center-page">
-          <span className="spinner primary"></span>
-          <p>Loading...</p>
-        </div>
-      )}
-   </>
+      ) : null}
+    </>
   );
 }
 

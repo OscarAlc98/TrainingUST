@@ -50,6 +50,7 @@ const projectAPI = {
         'Content-Type': 'application/json'
       }
     })
+      .then(delay(2000))
       .then(checkStatus)
       .then(parseJSON)
       .catch((error) => {
@@ -60,8 +61,9 @@ const projectAPI = {
       });
   },
 
-  get(page = 1, limit = 20) {
+  get(page = 1, limit = 10) {
     return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
+      .then(delay(2000))
       .then(checkStatus)
       .then(parseJSON)
       .then((projects) => {
@@ -75,6 +77,13 @@ const projectAPI = {
           'There was an error retrieving the projects. Please try again.'
         );
       });
+  },
+
+  find(id) {
+    return fetch(`${url}/${id}`)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(p=> new Project(p));
   },
 };
 

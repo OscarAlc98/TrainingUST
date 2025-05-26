@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { Project } from './Project';
 import { useState } from 'react';
+import { useSaveProject } from './projectHooks';
 
-function ProjectForm({ project: initialProject, onSave, onCancel }) {
+function ProjectForm({ project: initialProject, onCancel }) {
   const [project, setProject] = useState(initialProject);
   const [errors, setErrors] = useState({
     name: '',
@@ -10,10 +11,11 @@ function ProjectForm({ project: initialProject, onSave, onCancel }) {
     budget: '',
   });
 
+  const { mutate: saveProject, isPending } = useSaveProject();
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!isValid()) return;
-    onSave(project);
+    saveProject(project);
   };
 
   const handleChange = (event) => {
@@ -61,6 +63,7 @@ function ProjectForm({ project: initialProject, onSave, onCancel }) {
 
   return (
     <form className="input-group vertical" onSubmit={handleSubmit}>
+      {isPending && <span className="toast">Saving...</span>}
       <label htmlFor="name">Project Name</label>
       <input type="text" name="name" placeholder="enter name" 
       value={project.name} onChange={handleChange}/>
@@ -95,7 +98,6 @@ function ProjectForm({ project: initialProject, onSave, onCancel }) {
 
 ProjectForm.propTypes = {
   project: PropTypes.instanceOf(Project),
-  onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired
 };
 
