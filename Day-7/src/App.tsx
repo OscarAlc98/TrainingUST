@@ -30,7 +30,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/" element={<NewProject />} />
+          <Route path="/newProject" element={<NewProject />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
         </Routes>

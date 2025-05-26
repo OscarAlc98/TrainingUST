@@ -22,7 +22,14 @@ export function useProjects() {
 export function useSaveProject() {
   const queryClient = useQueryClient();
   return useMutation({
-   mutationFn: (project) => projectAPI.put(project),
-   onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
+    mutationFn: (project) => {
+      if (project.id) {
+        return projectAPI.put(project);
+      } else {
+        const { id, ...projectWithoutId } = project;
+        return projectAPI.post(projectWithoutId);
+      }
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
   });
 }

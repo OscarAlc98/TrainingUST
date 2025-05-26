@@ -61,6 +61,25 @@ const projectAPI = {
       });
   },
 
+  post(project) {
+  return fetch(`${url}`, {
+    method: 'POST',
+    body: JSON.stringify(project),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(delay(2000))
+    .then(checkStatus)
+    .then(parseJSON)
+    .catch((error) => {
+      console.log('log client error ' + error);
+      throw new Error(
+        'There was an error creating the project. Please try again.'
+      );
+    });
+},
+
   get(page = 1, limit = 10) {
     return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
       .then(delay(2000))

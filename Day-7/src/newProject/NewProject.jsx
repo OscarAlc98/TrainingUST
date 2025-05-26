@@ -1,19 +1,5 @@
-import ProjectForm from '../projects/ProjectForm';
-import { Project } from '../projects/Project';
+import NewProjectForm from './NewProjectForm';
 
-export default function NewProjectPage() {
-  const emptyProject = new Project({
-    id: 0,
-    name: '',
-    description: '',
-    budget: 0,
-    isActive: false
-  });
-
-  return (
-    <>
-      <h1>New Project</h1>
-      <ProjectForm project={emptyProject} onCancel={() => {}} /> {}
-    </>
-  );
+export default function NewProject() {
+  return <NewProjectForm />;
 }
