@@ -14,7 +14,21 @@ export default function NewProjectForm() {
     })
   );
 
-  const { mutate: saveProject, isPending } = useSaveProject();
+  const { mutate: saveProject, isPending } = useSaveProject({
+  onSuccess: () => {
+    // Limpia el formulario aquí
+    setProject({
+      id: 0,
+      name: '',
+      description: '',
+      budget: 0,
+      isActive: true,
+      contractSignedOn: '',
+      imageUrl: '',
+    });
+  },
+});
+
 
   const handleChange = (event) => {
     const { type, name, value, checked } = event.target;

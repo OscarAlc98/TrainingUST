@@ -1,6 +1,6 @@
 import { Project } from './Project';
 
-const baseUrl = 'http://localhost:4000';
+const baseUrl = 'http://localhost:3000';
 const url = `${baseUrl}/projects`;
 
 function translateStatusToErrorMessage(status) {

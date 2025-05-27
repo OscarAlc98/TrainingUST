@@ -30,6 +30,8 @@ export function useSaveProject() {
         return projectAPI.post(projectWithoutId);
       }
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
+    },
   });
 }

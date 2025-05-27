@@ -3,24 +3,45 @@ import PropTypes from 'prop-types';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
 import ProjectForm from './ProjectForm';
+import { useSaveProject } from './projectHooks';
 
 function ProjectList({ projects }) {
-  const [projectBeingEdited, setProjectBeingEdited] = useState();
+  const [projectBeingEdited, setProjectBeingEdited] = useState(null);
+
+  const { mutate: saveProject, isPending } = useSaveProject();
+
   const handleEdit = (project) => {
     setProjectBeingEdited(project);
   };
+
   const cancelEditing = () => {
     setProjectBeingEdited(null);
   };
-  const items = projects.map(project => (
+
+  const handleSave = (project) => {
+    saveProject(project, {
+      onSuccess: () => {
+        console.log('onSuccess ejecutado');
+        setProjectBeingEdited(null);
+      },
+    });
+  };
+
+  const items = projects.map((project) => (
     <div key={project.id} className="cols-sm">
-        {project === projectBeingEdited ? (
-          <ProjectForm project={project} onCancel={cancelEditing} />
-        ) : (
-          <ProjectCard project={project} onEdit={handleEdit} />
-        )}
-    </div>    
+      {projectBeingEdited && project.id === projectBeingEdited.id ? (
+        <ProjectForm
+          project={projectBeingEdited}
+          onCancel={cancelEditing}
+          onSubmit={handleSave}
+          isPending={isPending}
+        />
+      ) : (
+        <ProjectCard project={project} onEdit={handleEdit} />
+      )}
+    </div>
   ));
+
   return <div className="row">{items}</div>;
 }
 
