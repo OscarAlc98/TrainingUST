@@ -14,21 +14,7 @@ export default function NewProjectForm() {
     })
   );
 
-  const { mutate: saveProject, isPending } = useSaveProject({
-  onSuccess: () => {
-    // Limpia el formulario aquí
-    setProject({
-      id: 0,
-      name: '',
-      description: '',
-      budget: 0,
-      isActive: true,
-      contractSignedOn: '',
-      imageUrl: '',
-    });
-  },
-});
-
+  const { mutate: saveProject, isPending } = useSaveProject();
 
   const handleChange = (event) => {
     const { type, name, value, checked } = event.target;
@@ -40,22 +26,22 @@ export default function NewProjectForm() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    saveProject(project, {
-      onSuccess: () => {
-        setProject(
-          new Project({
-            id: 0,
-            name: '',
-            description: '',
-            budget: 0,
-            isActive: true,
-          })
-        );
-      },
-    });
-  };
+  const handleSubmit = (project) => {
+  saveProject(project, {
+    onSuccess: () => {
+      setProject(
+        new Project({
+          id: 0,
+          name: '',
+          description: '',
+          budget: 0,
+          isActive: true,
+        })
+      );
+      window.alert('✅ Proyect created!');
+    },
+  });
+};
 
   return (
     <div>
@@ -63,7 +49,6 @@ export default function NewProjectForm() {
       <ProjectForm
         project={project}
         onSubmit={handleSubmit}
-        onChange={handleChange}
         isPending={isPending}
       />
     </div>

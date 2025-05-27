@@ -19,9 +19,10 @@ function ProjectList({ projects }) {
   };
 
   const handleSave = (project) => {
-    saveProject(project, {
-      onSuccess: () => {
-        console.log('onSuccess ejecutado');
+    const plainProject = { ...project }; // destruye el Proxy
+    saveProject(plainProject, {
+      onSettled: () => {
+        console.log('onSettled ejecutado');
         setProjectBeingEdited(null);
       },
     });

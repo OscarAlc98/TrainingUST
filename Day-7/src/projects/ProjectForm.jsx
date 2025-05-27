@@ -3,7 +3,7 @@ import { Project } from './Project';
 import { useState } from 'react';
 import { useSaveProject } from './projectHooks';
 
-function ProjectForm({ project: initialProject, onCancel }) {
+function ProjectForm({ project: initialProject, onCancel, onSubmit, isPending }) {
   const [project, setProject] = useState(initialProject);
   const [errors, setErrors] = useState({
     name: '',
@@ -11,11 +11,10 @@ function ProjectForm({ project: initialProject, onCancel }) {
     budget: '',
   });
 
-  const { mutate: saveProject, isPending } = useSaveProject();
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!isValid()) return;
-    saveProject(project);
+    onSubmit(project);
   };
 
   const handleChange = (event) => {
@@ -98,7 +97,10 @@ function ProjectForm({ project: initialProject, onCancel }) {
 
 ProjectForm.propTypes = {
   project: PropTypes.instanceOf(Project),
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,  // ✔️ Asegura que se pasa correctamente
+  isPending: PropTypes.bool,            // ✔️ Lo marcamos como opcional
 };
+
 
 export default ProjectForm;
