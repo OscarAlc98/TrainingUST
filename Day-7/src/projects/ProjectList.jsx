@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
 import ProjectForm from './ProjectForm';
-import { useSaveProject } from './projectHooks';
+import { useSaveProject, useDeleteProject } from './projectHooks';
 
 function ProjectList({ projects }) {
   const [projectBeingEdited, setProjectBeingEdited] = useState(null);
-
   const { mutate: saveProject, isPending } = useSaveProject();
+  const { mutate: deleteProject } = useDeleteProject();
 
   const handleEdit = (project) => {
     setProjectBeingEdited(project);
@@ -19,18 +19,22 @@ function ProjectList({ projects }) {
   };
 
   const handleSave = (project) => {
-    const plainProject = { ...project }; // destruye el Proxy
-    saveProject(plainProject, {
-      onSettled: () => {
-        console.log('onSettled ejecutado');
+    saveProject(project, {
+      onSuccess: () => {
         setProjectBeingEdited(null);
       },
     });
   };
 
+  const handleDelete = (id) => {
+    if (window.confirm('Do you really want to delete this project?')) {
+      deleteProject(id);
+    }
+  };
+
   const items = projects.map((project) => (
     <div key={project.id} className="cols-sm">
-      {projectBeingEdited && project.id === projectBeingEdited.id ? (
+      {projectBeingEdited?.id === project.id ? (
         <ProjectForm
           project={projectBeingEdited}
           onCancel={cancelEditing}
@@ -38,7 +42,7 @@ function ProjectList({ projects }) {
           isPending={isPending}
         />
       ) : (
-        <ProjectCard project={project} onEdit={handleEdit} />
+        <ProjectCard project={project} onEdit={handleEdit} onDelete={handleDelete} />
       )}
     </div>
   ));

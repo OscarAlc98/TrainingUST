@@ -43,58 +43,47 @@ function delay(ms) {
 
 const projectAPI = {
   put(project) {
-    return fetch(`${url}/${project.id}`, {
+    const { id, ...projectWithoutId } = project;
+    console.log("Enviando proyecto al backend (PUT):", projectWithoutId);
+    return fetch(`${url}/${id}`, {
       method: 'PUT',
-      body: JSON.stringify(project),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      body: JSON.stringify(projectWithoutId),
+      headers: { 'Content-Type': 'application/json' }
     })
       .then(delay(2000))
       .then(checkStatus)
       .then(parseJSON)
       .catch((error) => {
         console.log('log client error ' + error);
-        throw new Error(
-          'There was an error updating the project. Please try again.'
-        );
+        throw new Error('There was an error updating the project. Please try again.');
       });
   },
 
   post(project) {
-  return fetch(`${url}`, {
-    method: 'POST',
-    body: JSON.stringify(project),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(delay(2000))
-    .then(checkStatus)
-    .then(parseJSON)
-    .catch((error) => {
-      console.log('log client error ' + error);
-      throw new Error(
-        'There was an error creating the project. Please try again.'
-      );
-    });
-},
-
-  get(page = 1, limit = 10) {
-    return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
+    console.log("Enviando proyecto al backend (POST):", project);
+    return fetch(`${url}`, {
+      method: 'POST',
+      body: JSON.stringify(project),
+      headers: { 'Content-Type': 'application/json' }
+    })
       .then(delay(2000))
       .then(checkStatus)
       .then(parseJSON)
-      .then((projects) => {
-        return projects.map((p) => {
-          return new Project(p);
-        });
-      })
       .catch((error) => {
         console.log('log client error ' + error);
-        throw new Error(
-          'There was an error retrieving the projects. Please try again.'
-        );
+        throw new Error('There was an error creating the project. Please try again.');
+      });
+  },
+
+  get(page = 1, limit = 10) {
+    return fetch(`${url}?page=${page}&limit=${limit}`)
+      .then(delay(2000))
+      .then(checkStatus)
+      .then(parseJSON)
+      .then((projects) => projects.map((p) => new Project(p)))
+      .catch((error) => {
+        console.log('log client error ' + error);
+        throw new Error('There was an error retrieving the projects. Please try again.');
       });
   },
 
@@ -102,7 +91,19 @@ const projectAPI = {
     return fetch(`${url}/${id}`)
       .then(checkStatus)
       .then(parseJSON)
-      .then(p=> new Project(p));
+      .then((p) => new Project(p));
+  },
+
+  delete(id) {
+    return fetch(`${url}/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error deleting the project');
+        }
+        return response.json();
+      });
   },
 };
 

@@ -9,7 +9,7 @@ function ProjectPage() {
   const [project, setProject] = useState(null);
   const [error, setError] = useState(null);
   const params = useParams();
-  const id = Number(params.id);
+  const id = params.id;
 
   useEffect(() => {
     setLoading(true);
@@ -20,7 +20,7 @@ function ProjectPage() {
         setLoading(false);
       })
       .catch((e) => {
-        setError(e);
+        setError(e.message);
         setLoading(false);
       });
   }, [id]);
