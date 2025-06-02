@@ -13,7 +13,6 @@ import AuthService from "./services/auth.service";
 // @ts-ignore
 import EventBus from "./common/EventBus.js";
 
-// Componentes de autenticación (colócalos en src/components)
 // @ts-ignore
 import Login from "./components/Login.component.jsx";
 // @ts-ignore
@@ -28,7 +27,7 @@ import BoardModerator from "./components/BoardModerator.component.jsx";
 import BoardAdmin from "./components/BoardAdmin.component.jsx";
 
 // @ts-ignore
-import Home from "./components/Home.component.jsx"; // <-- Nueva Home
+import Home from "./components/Home.component.jsx";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<any>(undefined);
@@ -119,15 +118,12 @@ function App() {
 
       <div className="container">
         <Routes>
-          {/* Ruta raíz ahora apunta a la nueva Home */}
           <Route path="/" element={<Home />} />
 
-          {/* Páginas de proyectos mantienen sus rutas */}
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
           <Route path="/newProject" element={<NewProject />} />
 
-          {/* Rutas de autenticación */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />

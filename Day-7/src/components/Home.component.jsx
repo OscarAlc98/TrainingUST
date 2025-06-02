@@ -1,6 +1,5 @@
-// src/components/Home.component.jsx
 import React from "react";
-import { NavLink } from "react-router"; // O "react-router-dom" si tu config lo permite
+import { NavLink } from "react-router";
 
 export default function Home() {
   return (
