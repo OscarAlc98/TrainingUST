@@ -14,23 +14,43 @@ function ProjectsPage() {
     isPreviousData,
   } = useProjects();
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
-    <>
+    <div className="container">
       <h1>Projects</h1>
+
+      <input
+        type="text"
+        placeholder="Search project..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+        style={{
+          width: '100%',
+          padding: '8px',
+          margin: '16px 0',
+          fontSize: '16px',
+          boxSizing: 'border-box',
+        }}
+      />
 
       {data ? (
         <>
-          {isFetching && !isPending && (
-            <span className="toast">Refreshing...</span>
-          )}
-          <ProjectList projects={data} />
+          {isFetching && !isPending && <span className="toast">Refreshing...</span>}
+
+          <ProjectList projects={data} searchTerm={searchTerm} />
+
           <div className="row">
             <div className="col-sm-4">Current page: {page + 1}</div>
             <div className="col-sm-4">
               <div className="button-group right">
                 <button
-                  className="button "
-                  onClick={() => setPage((oldPage) => oldPage - 1)}
+                  className="button"
+                  onClick={() => setPage(old => old - 1)}
                   disabled={page === 0}
                 >
                   Previous
@@ -38,9 +58,7 @@ function ProjectsPage() {
                 <button
                   className="button"
                   onClick={() => {
-                    if (!isPreviousData) {
-                      setPage((oldPage) => oldPage + 1);
-                    }
+                    if (!isPreviousData) setPage(old => old + 1);
                   }}
                   disabled={data.length < 10}
                 >
@@ -60,14 +78,14 @@ function ProjectsPage() {
           <div className="card large error">
             <section>
               <p>
-                <span className="icon-alert inverse "></span>
+                <span className="icon-alert inverse"></span>
                 {error.message}
               </p>
             </section>
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 }
 
