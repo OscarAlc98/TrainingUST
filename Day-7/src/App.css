@@ -1,5 +1,37 @@
+header.sticky {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+}
+
+header.sticky .button {
+  margin: 0 0.5rem;
+}
+
+header.sticky .right-links {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
 .button-delete {
-  background-color: #e53935; /* Rojo fuerte */
+  background-color: #e53935;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -9,11 +41,11 @@
 }
 
 .button-delete:hover {
-  background-color: #c62828; /* Rojo más oscuro */
+  background-color: #c62828;
 }
 
 .button-edit {
-  background-color: #1e88e5; /* Azul fuerte */
+  background-color: #1e88e5;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -23,5 +55,5 @@
 }
 
 .button-edit:hover {
-  background-color: #1565c0; /* Azul más oscuro */
+  background-color: #1565c0;
 }

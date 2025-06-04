@@ -9,14 +9,29 @@ export default class Profile extends Component {
     this.state = {
       redirect: null,
       userReady: false,
-      currentUser: { username: "" },
+      currentUser: { username: "", accessToken: "", id: "", email: "", roles: [] },
     };
   }
 
   componentDidMount() {
-    const currentUser = AuthService.getCurrentUser();
-    if (!currentUser) this.setState({ redirect: "/home" });
-    this.setState({ currentUser: currentUser, userReady: true });
+    const stored = AuthService.getCurrentUser();
+    if (!stored) {
+      this.setState({ redirect: "/home" });
+      return;
+    }
+    // stored = { accessToken, user: { id, username, email, roles } }
+    const { accessToken, user } = stored;
+    // Aplanamos user y agregamos accessToken
+    this.setState({
+      currentUser: {
+        username: user.username,
+        accessToken: accessToken,
+        id: user.id,
+        email: user.email,
+        roles: user.roles,
+      },
+      userReady: true,
+    });
   }
 
   render() {
@@ -36,7 +51,8 @@ export default class Profile extends Component {
               </h3>
             </header>
             <p>
-              <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
+              <strong>Token:</strong>{" "}
+              {currentUser.accessToken.substring(0, 20)} ...{" "}
               {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
             </p>
             <p>

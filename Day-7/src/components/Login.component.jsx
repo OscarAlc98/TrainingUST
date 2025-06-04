@@ -32,7 +32,7 @@ class Login extends Component {
 
     AuthService.login(this.state.username, this.state.password).then(
       () => {
-        this.props.router.navigate("/profile");
+        this.props.router.navigate("/projects");
         window.location.reload();
       },
       (error) => {
