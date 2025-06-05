@@ -1,0 +1,235 @@
+Started by user Oscar Daniel Alcantara
+Running as SYSTEM
+Building in workspace C:\Users\user_2\.jenkins\workspace\Back
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\Users\user_2\.jenkins\workspace\Back\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/OscarAlc98/NestJs # timeout=10
+Fetching upstream changes from https://github.com/OscarAlc98/NestJs
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.49.0.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/OscarAlc98/NestJs +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 28abf9d8984fc0d30ec467861d14232545e6c358 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 28abf9d8984fc0d30ec467861d14232545e6c358 # timeout=10
+Commit message: "June 4"
+ > git.exe rev-list --no-walk 28abf9d8984fc0d30ec467861d14232545e6c358 # timeout=10
+[Back] $ cmd /c call C:\Users\user_2\AppData\Local\Temp\jenkins13798125356369206900.bat
+
+C:\Users\user_2\.jenkins\workspace\Back>echo MONGO_URI=mongodb://localhost:27017/USTCourse 1>.env 
+
+C:\Users\user_2\.jenkins\workspace\Back>echo JWT_SECRET=UST1234 1>>.env 
+
+C:\Users\user_2\.jenkins\workspace\Back>echo JWT_EXPIRES_IN=3600s 1>>.env 
+
+C:\Users\user_2\.jenkins\workspace\Back>echo JWT_REFRESH_EXPIRES_IN=7d 1>>.env 
+
+C:\Users\user_2\.jenkins\workspace\Back>exit 0 
+[Back] $ cmd /c call C:\Users\user_2\AppData\Local\Temp\jenkins14259490718308270913.bat
+
+C:\Users\user_2\.jenkins\workspace\Back>npm i 
+
+up to date, audited 885 packages in 2s
+
+159 packages are looking for funding
+  run `npm fund` for details
+
+5 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Back] $ cmd /c call C:\Users\user_2\AppData\Local\Temp\jenkins14341022506942409994.bat
+
+C:\Users\user_2\.jenkins\workspace\Back>npm run build 
+
+> backend-service1@0.0.1 build
+> nest build
+
+[Back] $ cmd /c call C:\Users\user_2\AppData\Local\Temp\jenkins11594774740761008822.bat
+
+C:\Users\user_2\.jenkins\workspace\Back>npm run start:prod 
+
+> backend-service1@0.0.1 start:prod
+> node dist/main
+
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMongooseModule dependencies initialized[39m[38;5;3m +32ms[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6940  - [39m06/05/2025, 7:43:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[31m[Nest] 6940  - [39m06/05/2025, 7:44:14 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (1)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:44:47 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (2)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:45:20 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (3)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:45:53 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (4)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:46:26 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (5)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:46:59 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (6)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:47:32 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (7)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:48:05 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (8)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:48:38 PM [31m  ERROR[39m [38;5;3m[MongooseModule] [39m[31mUnable to connect to the database. Retrying (9)...[39m
+MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1165:11)
+    at NativeConnection.asPromise (C:\Users\user_2\.jenkins\workspace\Back\node_modules\mongoose\lib\connection.js:1633:11)
+    at async C:\Users\user_2\.jenkins\workspace\Back\node_modules\@nestjs\mongoose\dist\mongoose-core.module.js:40:125
+[31m[Nest] 6940  - [39m06/05/2025, 7:48:38 PM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mMongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors [90m(C:\Users\user_2\.jenkins\workspace\Back\[39mnode_modules\[4mmongoose[24m\lib\connection.js:1165:11[90m)[39m
+    at NativeConnection.asPromise [90m(C:\Users\user_2\.jenkins\workspace\Back\[39mnode_modules\[4mmongoose[24m\lib\connection.js:1633:11[90m)[39m
+    at async [90mC:\Users\user_2\.jenkins\workspace\Back\[39mnode_modules\[4m@nestjs[24m\mongoose\dist\mongoose-core.module.js:40:125 {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: [32m'Unknown'[39m,
+    servers: Map(1) {
+      [32m'localhost:27017'[39m => ServerDescription {
+        address: [32m'localhost:27017'[39m,
+        type: [32m'Unknown'[39m,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: [33m0[39m,
+        maxWireVersion: [33m0[39m,
+        roundTripTime: [33m-1[39m,
+        minRoundTripTime: [33m0[39m,
+        lastUpdateTime: [33m16853824[39m,
+        lastWriteDate: [33m0[39m,
+        error: MongoNetworkError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+            at Socket.<anonymous> [90m(C:\Users\user_2\.jenkins\workspace\Back\[39mnode_modules\[4mmongodb[24m\lib\cmap\connect.js:285:44[90m)[39m
+        [90m    at Object.onceWrapper (node:events:633:26)[39m
+        [90m    at Socket.emit (node:events:518:28)[39m
+        [90m    at emitErrorNT (node:internal/streams/destroy:170:8)[39m
+        [90m    at emitErrorCloseNT (node:internal/streams/destroy:129:3)[39m
+        [90m    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)[39m {
+          errorLabelSet: Set(1) {
+            [32m'ResetPool'[39m
+          },
+          beforeHandshake: [33mfalse[39m,
+          [cause]: AggregateError [ECONNREFUSED]: 
+          [90m    at internalConnectMultiple (node:net:1139:18)[39m
+          [90m    at afterConnectMultiple (node:net:1714:7)[39m {
+            code: [32m'ECONNREFUSED'[39m,
+            [errors]: [36m[Array][39m
+          }
+        },
+        topologyVersion: [1mnull[22m,
+        setName: [1mnull[22m,
+        setVersion: [1mnull[22m,
+        electionId: [1mnull[22m,
+        logicalSessionTimeoutMinutes: [1mnull[22m,
+        maxMessageSizeBytes: [1mnull[22m,
+        maxWriteBatchSize: [1mnull[22m,
+        maxBsonObjectSize: [1mnull[22m,
+        primary: [1mnull[22m,
+        me: [1mnull[22m,
+        [32m'$clusterTime'[39m: [1mnull[22m,
+        iscryptd: [33mfalse[39m
+      }
+    },
+    stale: [33mfalse[39m,
+    compatible: [33mtrue[39m,
+    heartbeatFrequencyMS: [33m10000[39m,
+    localThresholdMS: [33m15[39m,
+    setName: [1mnull[22m,
+    maxElectionId: [1mnull[22m,
+    maxSetVersion: [1mnull[22m,
+    commonWireVersion: [33m0[39m,
+    logicalSessionTimeoutMinutes: [1mnull[22m
+  },
+  code: [90mundefined[39m,
+  cause: TopologyDescription {
+    type: [32m'Unknown'[39m,
+    servers: Map(1) {
+      [32m'localhost:27017'[39m => ServerDescription {
+        address: [32m'localhost:27017'[39m,
+        type: [32m'Unknown'[39m,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: [33m0[39m,
+        maxWireVersion: [33m0[39m,
+        roundTripTime: [33m-1[39m,
+        minRoundTripTime: [33m0[39m,
+        lastUpdateTime: [33m16853824[39m,
+        lastWriteDate: [33m0[39m,
+        error: MongoNetworkError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+            at Socket.<anonymous> [90m(C:\Users\user_2\.jenkins\workspace\Back\[39mnode_modules\[4mmongodb[24m\lib\cmap\connect.js:285:44[90m)[39m
+        [90m    at Object.onceWrapper (node:events:633:26)[39m
+        [90m    at Socket.emit (node:events:518:28)[39m
+        [90m    at emitErrorNT (node:internal/streams/destroy:170:8)[39m
+        [90m    at emitErrorCloseNT (node:internal/streams/destroy:129:3)[39m
+        [90m    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)[39m {
+          errorLabelSet: Set(1) {
+            [32m'ResetPool'[39m
+          },
+          beforeHandshake: [33mfalse[39m,
+          [cause]: AggregateError [ECONNREFUSED]: 
+          [90m    at internalConnectMultiple (node:net:1139:18)[39m
+          [90m    at afterConnectMultiple (node:net:1714:7)[39m {
+            code: [32m'ECONNREFUSED'[39m,
+            [errors]: [36m[Array][39m
+          }
+        },
+        topologyVersion: [1mnull[22m,
+        setName: [1mnull[22m,
+        setVersion: [1mnull[22m,
+        electionId: [1mnull[22m,
+        logicalSessionTimeoutMinutes: [1mnull[22m,
+        maxMessageSizeBytes: [1mnull[22m,
+        maxWriteBatchSize: [1mnull[22m,
+        maxBsonObjectSize: [1mnull[22m,
+        primary: [1mnull[22m,
+        me: [1mnull[22m,
+        [32m'$clusterTime'[39m: [1mnull[22m,
+        iscryptd: [33mfalse[39m
+      }
+    },
+    stale: [33mfalse[39m,
+    compatible: [33mtrue[39m,
+    heartbeatFrequencyMS: [33m10000[39m,
+    localThresholdMS: [33m15[39m,
+    setName: [1mnull[22m,
+    maxElectionId: [1mnull[22m,
+    maxSetVersion: [1mnull[22m,
+    commonWireVersion: [33m0[39m,
+    logicalSessionTimeoutMinutes: [1mnull[22m
+  }
+}
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE
