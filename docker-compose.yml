@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build: ./Day-7/projectpilot
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./Nest/backend-service1
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./Nest/backend-service1/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
